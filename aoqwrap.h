@@ -19,7 +19,7 @@ Program Description
     void servoWrite(int ser_n, int deg);            //Function to rotate a servo
     int servoGetDeg(int analog_val, serType type);  //Function to get the rotation angle from a modified PWM servo.
     int setMultiPin(int pin_num);                   //Function to specify the multiplexer pins.
-    void BoardInit();                                 //Initializer
+    void BoardInit();                               //Initializer
 */
 
 #ifndef _aoqwrap_h
