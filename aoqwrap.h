@@ -26,7 +26,6 @@ Program Description
 #define _aoqwrap_h
 #include <arduino.h>
 
-
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
@@ -65,7 +64,8 @@ to be used by name and the appropriate parameters will be used.
 */
 typedef enum {
     SG90,
-    DS3218MG
+    DS3218MG,
+    EXHAUSTION  /*Specify when you want to de-power the servo.*/
 } serType;
 
 class AOQWRobotController
