@@ -17,6 +17,9 @@ void AOQWRobotController::servoWrite(int ser_n, int deg, serType type) {
       deg = map(deg, 0, 180, DS3218MG_SERVOMIN, DS3218MG_SERVOMAX);
       pwm.setPWM(ser_n, 0, deg);
       break;
+    case EXHAUSTION:
+      pwm.setPWM(ser_n, 0, 0);
+      break;
     default:
       break;
   }  
