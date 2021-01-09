@@ -11,7 +11,7 @@ void setup() {
   
   //実験に必要 
   RC.setMultiPin(0);
-  delay(10000);
+  // delay(10000);
 }
 
 
@@ -21,66 +21,76 @@ void setup() {
 #define right_head_servo 1
 #define center_head_servo 2
 //front leg (left)
-#define front_leg_left_1 4
-#define front_leg_left_2 5
-#define front_left_shoulder 6
+#define front_leg_left_1 5
+#define front_leg_left_2 4
+#define front_left_shoulder 8
 //front leg (right)
-#define front_leg_right_1 9
-#define front_leg_right_2 8
-#define front_right_shoulder 7
+#define front_leg_right_1 6
+#define front_leg_right_2 7
+#define front_right_shoulder 9 
 //back leg (left)
-#define back_leg_left_1 10
-#define back_leg_left_2 11
-#define back_left_shoulder 12
+#define back_leg_left_1 14
+#define back_leg_left_2 12
+#define back_left_shoulder 10
 //back leg (right)
 #define back_leg_right_1 15
-#define back_leg_right_2 14
-#define back_right_shoulder 13
+#define back_leg_right_2 13
+#define back_right_shoulder 11
+
+
 
 void loop() {
-  delay(1000);
-  // int deg1 = 110;
-  // int deg2 = 10;
-  // int deg3 = 0;
-  RC.servoWrite(center_head_servo, 160, SG90);
-  RC.servoWrite(left_head_servo, 130, SG90);
-  RC.servoWrite(right_head_servo,130, SG90);
+  delay(100);
+  RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
+  RC.servoWrite(front_leg_left_1, 0, EXHAUSTION);
+  RC.servoWrite(back_leg_right_1, 0, EXHAUSTION);
+  RC.servoWrite(back_leg_left_1, 0, EXHAUSTION);
 
-  // DS3218MGservoWrite(front_left_shoulder,deg1);
-  //DS3218MGservoWrite(front_right_shoulder,180-deg1);
-  // DS3218MGservoWrite(front_leg_left_2,deg2);
-  //DS3218MGservoWrite(front_leg_right_2,180-deg2);
-  // DS3218MGservoWrite(front_leg_left_1,deg3);
-  //DS3218MGservoWrite(front_leg_right_1,180-deg3);
-  /*
-  DS3218MGservoWrite(back_left_shoulder,deg1);
-  DS3218MGservoWrite(back_right_shoulder,180-deg1);
-  DS3218MGservoWrite(back_leg_left_2,deg2);
-  DS3218MGservoWrite(back_leg_right_2,180-deg2);
-  DS3218MGservoWrite(back_leg_left_1,deg3);
-  DS3218MGservoWrite(back_leg_right_1,180-deg3);
-  // */
-  delay(1000);
-  // deg1 = 90;
-  // deg2 = 90;
-  // deg3 = 100;
-  RC.servoWrite(center_head_servo, 160, SG90);
-  RC.servoWrite(left_head_servo, 50, SG90);
-  RC.servoWrite(right_head_servo,50, SG90);
-  // DS3218MGservoWrite(front_left_shoulder,deg1);
-  //DS3218MGservoWrite(front_right_shoulder,180-deg1);
-  // DS3218MGservoWrite(front_leg_left_2,deg2);
-  //DS3218MGservoWrite(front_leg_right_2,180-deg2);
-  // DS3218MGservoWrite(front_leg_left_1,deg3);
-  //DS3218MGservoWrite(front_leg_right_1,180-deg3);
-  /*
-  DS3218MGservoWrite(back_left_shoulder,deg1);
-  DS3218MGservoWrite(back_right_shoulder,180-deg1);
-  DS3218MGservoWrite(back_leg_left_2,deg2);
-  DS3218MGservoWrite(back_leg_right_2,180-deg2);
-  DS3218MGservoWrite(back_leg_left_1,deg3);
-  DS3218MGservoWrite(back_leg_right_1,180-deg3);
-  */
+  RC.servoWrite(front_leg_right_2, 180, DS3218MG);
+  RC.servoWrite(front_right_shoulder, 30, DS3218MG);
+  RC.servoWrite(front_leg_left_2, 180-180, DS3218MG);
+  RC.servoWrite(front_left_shoulder, 180-30, DS3218MG);
+  RC.servoWrite(back_leg_right_2, 180, DS3218MG);
+  RC.servoWrite(back_right_shoulder, 30, DS3218MG);
+  RC.servoWrite(back_leg_left_2, 180-180, DS3218MG);
+  RC.servoWrite(back_left_shoulder, 180-30, DS3218MG);
+
+  delay(100);
+  RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
+  RC.servoWrite(front_leg_left_1, 0, EXHAUSTION);
+  RC.servoWrite(back_leg_right_1, 0, EXHAUSTION);
+  RC.servoWrite(back_leg_left_1, 0, EXHAUSTION);
+  
+  RC.servoWrite(front_leg_right_2, 120, DS3218MG);
+  RC.servoWrite(front_right_shoulder, 80, DS3218MG);
+  RC.servoWrite(front_leg_left_2, 180-120, DS3218MG);
+  RC.servoWrite(front_left_shoulder, 180-80, DS3218MG);
+  RC.servoWrite(back_leg_right_2, 120, DS3218MG);
+  RC.servoWrite(back_right_shoulder, 70, DS3218MG);
+  RC.servoWrite(back_leg_left_2, 180-120, DS3218MG);
+  RC.servoWrite(back_left_shoulder, 180-70, DS3218MG);
+  // RC.servoWrite(center_head_servo, 160, SG90);
+  // RC.servoWrite(left_head_servo, 130, SG90);
+  // RC.servoWrite(right_head_servo,130, SG90);
+
+  // RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
+  // RC.servoWrite(left_head_servo, 0, EXHAUSTION);
+  // RC.servoWrite(right_head_servo, 0, EXHAUSTION);
+  // RC.servoWrite(center_head_servo, 0, EXHAUSTION);
+
+  // RC.setMultiPin(0); int num_s = analogRead(A7); int deg_s = RC.servoGetDeg(num_s, DS3218MG);int num_h = analogRead(A6); int deg_h = RC.servoGetDeg(num_h, DS3218MG);
+  // Serial.print(deg_s);
+  // Serial.print(":");
+  // Serial.println(deg_h);
+
+  // delay(1000);
+  // RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
+  // RC.servoWrite(left_head_servo, 0, EXHAUSTION);
+  // RC.servoWrite(right_head_servo, 0, EXHAUSTION);
+  // RC.servoWrite(center_head_servo, 0, EXHAUSTION);
+  // RC.servoWrite(center_head_servo, 160, SG90);
+  // RC.servoWrite(left_head_servo, 50, SG90);
+  // RC.servoWrite(right_head_servo,50, SG90);
   /*
   for (int deg=0; deg < 180; deg++) {
     DS3218MGservoWrite(0, deg);
