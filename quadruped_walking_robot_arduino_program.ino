@@ -4,6 +4,13 @@
 
 AOQWRobotController RC;
 
+typedef enum {
+  FLEFT, /*front left*/
+  FRIGHT, /*front right*/
+  BLEFT, /*back left*/ 
+  BRIGHT /*back right*/
+} legPosition;
+
 void setup() {
   RC.BoardInit();
 
@@ -37,51 +44,43 @@ void setup() {
 #define back_leg_right_2 13
 #define back_right_shoulder 11
 
-typedef enum {
-  FLEFT, /*front left*/
-  FRIGHT, /*front right*/
-  BLEFT, /*back left*/ 
-  BRIGHT /*back right*/
-} legPosition;
-
 void bendingAndStretching(legPosition lp) {
-  switch(lp){
+  switch (lp) {
     case FLEFT:
       RC.servoWrite(front_leg_left_2, 180-180, DS3218MG);
       RC.servoWrite(front_left_shoulder, 180-30, DS3218MG);
-      delay(500);
+      delay(150);
       RC.servoWrite(front_leg_left_2, 180-120, DS3218MG);
       RC.servoWrite(front_left_shoulder, 180-80, DS3218MG);
-      delay(500);
+      delay(150);
       break;
     case FRIGHT:
       RC.servoWrite(front_leg_right_2, 180, DS3218MG);
       RC.servoWrite(front_right_shoulder, 30, DS3218MG);
-      delay(500);
+      delay(150);
       RC.servoWrite(front_leg_right_2, 120, DS3218MG);
       RC.servoWrite(front_right_shoulder, 80, DS3218MG);
-      delay(500);
+      delay(150);
       break;
     case BLEFT:
       RC.servoWrite(back_leg_left_2, 180-180, DS3218MG);
       RC.servoWrite(back_left_shoulder, 180-30, DS3218MG);
-      delay(500);
+      delay(150);
       RC.servoWrite(back_leg_left_2, 180-120, DS3218MG);
       RC.servoWrite(back_left_shoulder, 180-70, DS3218MG);
-      delay(500);
+      delay(150);
       break;
     case BRIGHT:
       RC.servoWrite(back_leg_right_2, 180, DS3218MG);
       RC.servoWrite(back_right_shoulder, 30, DS3218MG);
-      delay(500);
+      delay(150);
       RC.servoWrite(back_leg_right_2, 120, DS3218MG);
       RC.servoWrite(back_right_shoulder, 70, DS3218MG);
-      delay(500);
+      delay(150);
       break;
     default:
       break;
   }
-
 }
 
 void loop() {
