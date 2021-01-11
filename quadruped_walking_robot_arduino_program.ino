@@ -37,38 +37,60 @@ void setup() {
 #define back_leg_right_2 13
 #define back_right_shoulder 11
 
+typedef enum {
+  FLEFT, /*front left*/
+  FRIGHT, /*front right*/
+  BLEFT, /*back left*/ 
+  BRIGHT /*back right*/
+} legPosition;
 
+void bendingAndStretching(legPosition lp) {
+  switch(lp){
+    case FLEFT:
+      RC.servoWrite(front_leg_left_2, 180-180, DS3218MG);
+      RC.servoWrite(front_left_shoulder, 180-30, DS3218MG);
+      delay(500);
+      RC.servoWrite(front_leg_left_2, 180-120, DS3218MG);
+      RC.servoWrite(front_left_shoulder, 180-80, DS3218MG);
+      delay(500);
+      break;
+    case FRIGHT:
+      RC.servoWrite(front_leg_right_2, 180, DS3218MG);
+      RC.servoWrite(front_right_shoulder, 30, DS3218MG);
+      delay(500);
+      RC.servoWrite(front_leg_right_2, 120, DS3218MG);
+      RC.servoWrite(front_right_shoulder, 80, DS3218MG);
+      delay(500);
+      break;
+    case BLEFT:
+      RC.servoWrite(back_leg_left_2, 180-180, DS3218MG);
+      RC.servoWrite(back_left_shoulder, 180-30, DS3218MG);
+      delay(500);
+      RC.servoWrite(back_leg_left_2, 180-120, DS3218MG);
+      RC.servoWrite(back_left_shoulder, 180-70, DS3218MG);
+      delay(500);
+      break;
+    case BRIGHT:
+      RC.servoWrite(back_leg_right_2, 180, DS3218MG);
+      RC.servoWrite(back_right_shoulder, 30, DS3218MG);
+      delay(500);
+      RC.servoWrite(back_leg_right_2, 120, DS3218MG);
+      RC.servoWrite(back_right_shoulder, 70, DS3218MG);
+      delay(500);
+      break;
+    default:
+      break;
+  }
+
+}
 
 void loop() {
-  delay(100);
-  RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
-  RC.servoWrite(front_leg_left_1, 0, EXHAUSTION);
-  RC.servoWrite(back_leg_right_1, 0, EXHAUSTION);
-  RC.servoWrite(back_leg_left_1, 0, EXHAUSTION);
-
-  RC.servoWrite(front_leg_right_2, 180, DS3218MG);
-  RC.servoWrite(front_right_shoulder, 30, DS3218MG);
-  RC.servoWrite(front_leg_left_2, 180-180, DS3218MG);
-  RC.servoWrite(front_left_shoulder, 180-30, DS3218MG);
-  RC.servoWrite(back_leg_right_2, 180, DS3218MG);
-  RC.servoWrite(back_right_shoulder, 30, DS3218MG);
-  RC.servoWrite(back_leg_left_2, 180-180, DS3218MG);
-  RC.servoWrite(back_left_shoulder, 180-30, DS3218MG);
-
-  delay(100);
-  RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
-  RC.servoWrite(front_leg_left_1, 0, EXHAUSTION);
-  RC.servoWrite(back_leg_right_1, 0, EXHAUSTION);
-  RC.servoWrite(back_leg_left_1, 0, EXHAUSTION);
-  
-  RC.servoWrite(front_leg_right_2, 120, DS3218MG);
-  RC.servoWrite(front_right_shoulder, 80, DS3218MG);
-  RC.servoWrite(front_leg_left_2, 180-120, DS3218MG);
-  RC.servoWrite(front_left_shoulder, 180-80, DS3218MG);
-  RC.servoWrite(back_leg_right_2, 120, DS3218MG);
-  RC.servoWrite(back_right_shoulder, 70, DS3218MG);
-  RC.servoWrite(back_leg_left_2, 180-120, DS3218MG);
-  RC.servoWrite(back_left_shoulder, 180-70, DS3218MG);
+  bendingAndStretching(FLEFT);
+  bendingAndStretching(FRIGHT);
+  bendingAndStretching(BLEFT);
+  bendingAndStretching(BRIGHT);
+ 
+  // RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
   // RC.servoWrite(center_head_servo, 160, SG90);
   // RC.servoWrite(left_head_servo, 130, SG90);
   // RC.servoWrite(right_head_servo,130, SG90);
