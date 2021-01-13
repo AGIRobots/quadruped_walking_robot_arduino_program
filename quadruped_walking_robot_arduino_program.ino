@@ -188,11 +188,11 @@ void loop() {
   // RC.setMultiPin(15); int num_s = analogRead(A7); int deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.print(deg_s); Serial.print(":");
   // RC.setMultiPin(14); num_s = analogRead(A7); deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.print(deg_s); Serial.print(":");
   // RC.setMultiPin(13); num_s = analogRead(A7); deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.println(deg_s);
-  
-  flRigth(1, 53, 90, 35); blLeft(1, 53, 80, 25); flLeft(3, 53, 90, 35); blRight(3, 53, 80, 25); delay(200);
-  flRigth(2, 53, 90, 35); blLeft(2, 53, 80, 25); flLeft(4, 53, 90, 35); blRight(4, 53, 80, 25); delay(200);
-  flRigth(3, 53, 90, 35); blLeft(3, 53, 80, 25); flLeft(1, 53, 90, 35); blRight(1, 53, 80, 25); delay(200);
-  flRigth(4, 53, 90, 35); blLeft(4, 53, 80, 25); flLeft(2, 53, 90, 35); blRight(2, 53, 80, 25); delay(200);
+  int arg1 = 90
+  flRigth(1, arg1, 90, 35); blLeft(1, arg1, 80, 25); flLeft(3, arg1, 90, 35); blRight(3, arg1, 80, 25); delay(200);
+  flRigth(2, arg1, 90, 35); blLeft(2, arg1, 80, 25); flLeft(4, arg1, 90, 35); blRight(4, arg1, 80, 25); delay(200);
+  flRigth(3, arg1, 90, 35); blLeft(3, arg1, 80, 25); flLeft(1, arg1, 90, 35); blRight(1, arg1, 80, 25); delay(200);
+  flRigth(4, arg1, 90, 35); blLeft(4, arg1, 80, 25); flLeft(2, arg1, 90, 35); blRight(2, arg1, 80, 25); delay(200);
 }
   // delay(1000);
   // RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
