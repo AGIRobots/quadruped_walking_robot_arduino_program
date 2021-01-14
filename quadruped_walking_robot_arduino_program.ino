@@ -44,6 +44,73 @@ void setup() {
 #define back_leg_right_2 13
 #define back_right_shoulder 11
 
+int fll[] = {front_left_shoulder, front_leg_left_1, front_leg_left_2};
+int flr[] = {front_right_shoulder, front_leg_right_1, front_leg_right_2};
+int bll[] = {back_left_shoulder, back_leg_left_1, back_leg_left_2};
+int blr[] = {back_right_shoulder, back_leg_right_1, back_leg_right_2};
+
+void standUp(){
+  int i, arg;
+  for(i=0; i<3; i++){
+    switch(i){
+      case 0:
+        arg = 100;
+        RC.servoWrite(fll[i], arg, DS3218MG);
+        RC.servoWrite(flr[i], 180-arg, DS3218MG);
+        RC.servoWrite(bll[i], arg+10, DS3218MG);
+        RC.servoWrite(blr[i], 180-arg-10, DS3218MG);
+        break;
+      case 1:
+        arg = 30;
+        RC.servoWrite(fll[i], 30, DS3218MG);
+        RC.servoWrite(flr[i], 180-30, DS3218MG);
+        RC.servoWrite(bll[i], 30, DS3218MG);
+        RC.servoWrite(blr[i], 180-30, DS3218MG);
+        break;
+      case 2:
+        arg = 70;
+        RC.servoWrite(fll[i], arg, DS3218MG);
+        RC.servoWrite(flr[i], 180-arg, DS3218MG);
+        RC.servoWrite(bll[i], arg, DS3218MG);
+        RC.servoWrite(blr[i], 180-arg, DS3218MG);
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+void squat(){
+  int i, arg;
+  for(i=0; i<3; i++){
+    switch(i){
+      case 0:
+        arg = 140;
+        RC.servoWrite(fll[i], arg, DS3218MG);
+        RC.servoWrite(flr[i], 180-arg, DS3218MG);
+        RC.servoWrite(bll[i], arg+20, DS3218MG);
+        RC.servoWrite(blr[i], 180-arg-20, DS3218MG);
+        break;
+      case 1:
+        arg = 30;
+        RC.servoWrite(fll[i], arg, DS3218MG);
+        RC.servoWrite(flr[i], 180-arg, DS3218MG);
+        RC.servoWrite(bll[i], arg, DS3218MG);
+        RC.servoWrite(blr[i], 180-arg, DS3218MG);
+        break;
+      case 2:
+        arg = 0;
+        RC.servoWrite(fll[i], arg, DS3218MG);
+        RC.servoWrite(flr[i], 180-arg, DS3218MG);
+        RC.servoWrite(bll[i], arg, DS3218MG);
+        RC.servoWrite(blr[i], 180-arg, DS3218MG);
+        break;
+      default:
+        break;
+    }
+  }
+}
+
 void bendingAndStretching(legPosition lp) {
   switch (lp) {
     case FLEFT:
@@ -188,11 +255,19 @@ void loop() {
   // RC.setMultiPin(15); int num_s = analogRead(A7); int deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.print(deg_s); Serial.print(":");
   // RC.setMultiPin(14); num_s = analogRead(A7); deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.print(deg_s); Serial.print(":");
   // RC.setMultiPin(13); num_s = analogRead(A7); deg_s = RC.servoGetDeg(num_s, DS3218MG); Serial.println(deg_s);
-  int arg1 = 90
-  flRigth(1, arg1, 90, 35); blLeft(1, arg1, 80, 25); flLeft(3, arg1, 90, 35); blRight(3, arg1, 80, 25); delay(200);
-  flRigth(2, arg1, 90, 35); blLeft(2, arg1, 80, 25); flLeft(4, arg1, 90, 35); blRight(4, arg1, 80, 25); delay(200);
-  flRigth(3, arg1, 90, 35); blLeft(3, arg1, 80, 25); flLeft(1, arg1, 90, 35); blRight(1, arg1, 80, 25); delay(200);
-  flRigth(4, arg1, 90, 35); blLeft(4, arg1, 80, 25); flLeft(2, arg1, 90, 35); blRight(2, arg1, 80, 25); delay(200);
+
+  // standUp();delay(2000);
+
+  squat();delay(2000);
+  for (int i=0; i<10; i++){
+  int fArgS = 53; int bArgS = 53; 
+  int fArgM = 100; int bArgM = 50; 
+  int fArgE = 35; int bArgE = 0; 
+    flRigth(1, fArgS, fArgM, fArgE); blLeft(1, bArgS, bArgM, bArgE); flLeft(3, fArgS, fArgM, fArgE); blRight(3, bArgS, bArgM, bArgE); delay(500);
+    flRigth(2, fArgS, fArgM, fArgE); blLeft(2, bArgS, bArgM, bArgE); flLeft(4, fArgS, fArgM, fArgE); blRight(4, bArgS, bArgM, bArgE); delay(500);
+    flRigth(3, fArgS, fArgM, fArgE); blLeft(3, bArgS, bArgM, bArgE); flLeft(1, fArgS, fArgM, fArgE); blRight(1, bArgS, bArgM, bArgE); delay(500);
+    flRigth(4, fArgS, fArgM, fArgE); blLeft(4, bArgS, bArgM, bArgE); flLeft(2, fArgS, fArgM, fArgE); blRight(2, bArgS, bArgM, bArgE); delay(500);
+  }
 }
   // delay(1000);
   // RC.servoWrite(front_leg_right_1, 0, EXHAUSTION);
